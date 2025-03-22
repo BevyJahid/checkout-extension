@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "9fc87be81c6093c06726b5b6b508b68e"
-application_url = "https://gonna-atlanta-duration-trek.trycloudflare.com"
+application_url = "https://change-worth-uncertainty-zen.trycloudflare.com"
 embedded = true
 name = "marh18"
 handle = "marh18"
@@ -23,13 +23,13 @@ api_version = "2025-01"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "read_customers,write_products, write_discounts, write_discounts_allocator_functions, read_products"
 
 [auth]
 redirect_urls = [
-  "https://gonna-atlanta-duration-trek.trycloudflare.com/auth/callback",
-  "https://gonna-atlanta-duration-trek.trycloudflare.com/auth/shopify/callback",
-  "https://gonna-atlanta-duration-trek.trycloudflare.com/api/auth/callback"
+  "https://change-worth-uncertainty-zen.trycloudflare.com/auth/callback",
+  "https://change-worth-uncertainty-zen.trycloudflare.com/auth/shopify/callback",
+  "https://change-worth-uncertainty-zen.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

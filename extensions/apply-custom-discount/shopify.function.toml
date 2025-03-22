@@ -1,0 +1,8 @@
+type = "order_discounts"
+name = "apply-custom-discount"
+handle = "apply-custom-discount"
+api_version = "2024-01"
+
+[build]
+command = ""  # No build step needed for plain JS
+path = "src/index.js"

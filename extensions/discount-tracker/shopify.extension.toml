@@ -1,0 +1,5 @@
+type = "web_pixel"
+name = "discount-tracker"
+handle = "discount-tracker"
+api_version = "2024-01"
+runtime_context = "strict"  # Added this

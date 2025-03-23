@@ -1,0 +1,6 @@
+schema: "https://shopify.dev/graphql/admin"  # Shopify Admin GraphQL schema (or your store’s schema)
+documents: "src/index.js"                    # Where your GraphQL query lives
+generates:
+  ./src/generated/graphql.ts:                # Output file (optional, can be ignored if not using TS)
+    plugins:
+      - "typescript"

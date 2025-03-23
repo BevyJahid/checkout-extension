@@ -69,6 +69,9 @@ import {
   useMetafield,
   useAppMetafields,
   useCartLines,
+  useApplyDiscountCodeChange,
+  useApplyMetafieldsChange,
+
 } from "@shopify/ui-extensions-react/checkout";
 
 export default reactExtension("purchase.checkout.cart-line-item.render-after", () => (
@@ -76,39 +79,40 @@ export default reactExtension("purchase.checkout.cart-line-item.render-after", (
 ));
 
 function Extension() {
-  const { lines } = useApi();
-  const applyAttributeChange = useApplyAttributeChange();
+  const { lines,analytics } = useApi();
+  const applyDiscount = useApplyDiscountCodeChange()
   const cartLines = useCartLines();
- const cartTotal = lines.current[0].cost.totalAmount.amount;
- const currentCurrencyCode = lines.current[0].cost.totalAmount.currencyCode;
+  const cartTotal = lines.current[0].cost.totalAmount.amount;
+  const currentCurrencyCode = lines.current[0].cost.totalAmount.currencyCode;
   const fields = useAppMetafields({
     type: "customer",
     namespace: "custom",
     key: "discount",
   });
-  const eligibleDiscount = parseFloat(fields[0]?.metafield?.value || "0");
-  const discountAmount = (cartTotal * eligibleDiscount) / 100;
-  async function applyDiscount() {
-    console.log("Applying discount...");
-  
-    const isSuccess = await applyAttributeChange({
-      key: "custom_discount_code",
-      type: "updateAttribute",
-      value: `${eligibleDiscount}`,
+  const discountCode = fields[0]?.metafield?.value || ''
+  async function applyDiscountFunc() {
+    const customerId = "123";
+    analytics.publish("discount_button_clicked", {
+      customerId,
+      discountCode,
+      cartTotal: parseFloat(cartTotal),
     });
-  
-    console.log("Discount attribute applied successfully:", isSuccess);
+    console.log("Applying discount...");
+    applyDiscount({
+      code: discountCode,
+      type: 'addDiscountCode',
+    });
   }
 
   return (
     <BlockStack border="dotted" padding="tight">
-    <Banner>
-      <BlockStack>
-        <Text>Cart Value: {cartTotal} {currentCurrencyCode}</Text>
-        <Text>Discount ({eligibleDiscount}%): {discountAmount} {currentCurrencyCode}</Text>
-      </BlockStack>
-    </Banner>
-    <Button onPress={applyDiscount}>Apply Discount</Button>
-  </BlockStack>
+      <Banner>
+        <BlockStack>
+          <Text>Cart Value: {cartTotal} {currentCurrencyCode}</Text>
+        </BlockStack>
+      </Banner>
+      <Button onPress={applyDiscountFunc}>Apply Discount</Button>
+    </BlockStack>
   );
+
 }

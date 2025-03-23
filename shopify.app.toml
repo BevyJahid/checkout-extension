@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "9fc87be81c6093c06726b5b6b508b68e"
-application_url = "https://change-worth-uncertainty-zen.trycloudflare.com"
+application_url = "https://asset-dust-icons-responding.trycloudflare.com"
 embedded = true
 name = "marh18"
 handle = "marh18"
@@ -27,9 +27,9 @@ scopes = "read_customers,write_products, write_discounts, write_discounts_alloca
 
 [auth]
 redirect_urls = [
-  "https://change-worth-uncertainty-zen.trycloudflare.com/auth/callback",
-  "https://change-worth-uncertainty-zen.trycloudflare.com/auth/shopify/callback",
-  "https://change-worth-uncertainty-zen.trycloudflare.com/api/auth/callback"
+  "https://asset-dust-icons-responding.trycloudflare.com/auth/callback",
+  "https://asset-dust-icons-responding.trycloudflare.com/auth/shopify/callback",
+  "https://asset-dust-icons-responding.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
